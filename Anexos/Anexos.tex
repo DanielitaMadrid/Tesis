@@ -1,0 +1,688 @@
+\section{Connection on a vector bundle}
+
+
+Given a smooth function $f=(f^{1},\dots,f^{m}):M\rightarrow\mathbb{R}^{m}$ and
+a vector field $X\in\mathfrak{X}(M)$ it makes sense to consider the derivative
+of $f$ in the direction of $X$:
+\[
+X(f)=(X(f^{1}),\dots,X(f^{m}))=Df (X).
+\]
+
+
+On the other hand, if $\alpha\in\Gamma(E)$ is a section of a vector bundle
+$E$, there is no natural way to differentiate $\alpha$ in the direction of a
+vector field. A connection on a vector bundle $E$ is a rule that prescribes
+how to differentiate sections of $E$ in the direction of vector fields.
+
+\begin{definition}
+	Let $\pi:E\rightarrow M$ be a vector bundle. A connection $\nabla$ on $E$ is a
+	linear map:
+	\[
+	\nabla:\mathfrak{X}(M)\otimes\Gamma(E)\rightarrow\Gamma(E);\quad
+	(X,\alpha)\mapsto\nabla_{X}\alpha
+	\]
+	such that for any smooth function $f\in C^{\infty}(M)$, $X\in\mathfrak{X}(M)$
+	and $\alpha\in\Gamma(E)$ the following two conditions are satisfied:
+	\begin{enumerate}
+		\item \[\nabla_{fX}\alpha=f\nabla_{X}\alpha,\]
+		\item \[\nabla_{X}\left(  f\alpha\right)  =\left(  X(f)\right)  \alpha
+		+f\nabla_{X}\alpha.\]
+	\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+	Show that in the case where $E=M \times\mathbb{R}^{m}$ is the trivial bundle,
+	the directional derivative described above is a connection on $E$.
+\end{exercise}
+
+\begin{definition}
+	If $E$ is a vector bundle with connection, we will say that a section
+	$\alpha\in\Gamma(E)$ is covariantly constant if $\nabla_{X}(\alpha)=0$ for any
+	vector field $X\in\mathfrak{X}(M)$.
+\end{definition}
+
+Let us now consider the case $E=TM$ and describe how a connection is expressed
+in local coordinates $\varphi=(x^{1},\dots,x^{m})$. The Christoffel symbols
+$\Gamma_{ij}^{k}:M\rightarrow\mathbb{R}$ are smooth functions determined by
+the condition \[\nabla_{\partial_{i}}{\partial_{j}}=\sum_{k}%
+\Gamma_{ij}^{k}\partial_{k}.\]
+The connection $\nabla$ is
+determined by the Christoffel symbols. Given vector fields
+$X=\sum_{i}a^{i}\partial_{i},$ $Y=\sum_{j}b^{j}\partial_{j}$ one computes:
+\begin{align*}
+\nabla_{X}Y  &  =\sum_{i}a^{i}\nabla_{\partial_{i}}\left(  \sum_{j}%
+b^{j}\partial_{j}\right)  =\sum_{i,j}a^{i}\nabla_{\partial_{i}}\left(
+b^{j}\partial_{j}\right) \\
+&  =\sum_{i,j}a^{i}\left(  \frac{\partial b^{j}}{\partial x^{i}}\partial
+_{j}+b^{j}\nabla_{\partial_{i}}\partial_{j}\right) \\
+&  =\sum_{i,j}a^{i}\left(  \frac{\partial b^{j}}{\partial x^{i}}\partial
+_{j}+b^{j}\sum_{k}\Gamma_{ij}^{k}\partial_{k}\right) \\
+&  =\sum_{i,j}a^{i}\frac{\partial b^{j}}{\partial x^{i}}\partial_{j}%
++\sum_{i,j}a^{i}b^{j}\sum_{k}\Gamma_{ij}^{k}\partial_{k}\\
+&  =\sum_{k}\left(  \sum_{i}a^i\frac{\partial b^{k}}{\partial x^{i}}\partial
+_{k}+\sum_{i,j}\Gamma_{ij}^{k}b^{j}a^{i}\right)  \partial_{k}.
+\end{align*}
+
+
+%\begin{exercise}
+%Sean $X,Y$ campos vectoriales en $U$ y $\alpha,\alpha' \in \Gamma(E)$ tales que:
+%\[ X(p)=X'(p); \quad \alpha (\gamma(t))= \alpha'(\gamma(t)),\]
+%donde $\gamma: I \rightarrow U$ es una curva tal que:
+%\[ \gamma(0)=p; \quad \gamma'(0)=X(p).\]
+%Probar que para cualquier conexi\'on $\nabla$ en $E$ se tiene que:
+%\[ \nabla_X \alpha (p)= \nabla_{X'} \alpha' (p).\]
+%\end{exercise}
+
+
+A Riemannian metric $g$ on a manifold $M$ induces a connection, called
+the \emph{Levi-Civita Connection}, on the tangent bundle $TM$.
+
+\begin{definition}
+	Let $\nabla$ be a connection on $TM$. The torsion of $\nabla$ is the function
+	\begin{align*}
+	T: \mathfrak{X}(M) \otimes\mathfrak{X}(M) \rightarrow\mathfrak{X}(M);
+	\quad(X,Y)\mapsto\nabla_{X} Y -\nabla_{Y} X - [X,Y].
+	\end{align*}
+	
+\end{definition}
+
+\begin{exercise} Show that given vector fields $X,Y,Z\in\mathfrak{X}(M) $, the
+	torsion satisfies:
+	
+	\begin{itemize}
+		\item Linearity with respect to functions: \[T(fX,Y)=fT(X,Y);\quad
+		T(X,fY)=fT(X,Y).\]
+		
+		\item Skewsymmetry: \[T\left(  X,Y\right)  +T\left(  Y,X\right)  =0.\]
+	\end{itemize}
+	
+\end{exercise}
+
+
+The previous exercise implies that one can view the torsion as a tensor:
+
+\[
+T\in\Omega^{2}(M,TM)=\Gamma(\Lambda^{2}(T^{\ast}M)\otimes TM),
+\]
+defined by:
+\[
+T(p)(v,w)=\nabla_{X}Y(p)-\nabla_{Y}X(p)-[X,Y](p),
+\]
+for any choice of vector fields $X,Y$ such that $X(p)=v$ and $Y(p)=w$.
+
+\begin{definition}
+	A connection on $TM$ is called symmetric if its torsion is zero.
+\end{definition}
+
+\begin{exercise}
+	Show that a connection $\nabla$ is symmetric if and only if for any choice of
+	coordinates, the Christoffel symbols satisfy $\Gamma_{ij}^{k}=\Gamma_{ji}%
+	^{k}.$
+\end{exercise}
+
+\begin{definition}
+	A connection on a riemannian manifold $\left(  M,g\right)  $ is
+	compatible with the metric if:
+	\[
+	{X}(g(Y,Z))=g\left(  \nabla_{X}Y,\text{ }Z\right)  +g\left(  Y,\text{ }%
+	\nabla_{X}Z\right)  ,
+	\]
+	for all $X,Y,Z\in\mathfrak{X}(M).$
+\end{definition}
+
+\begin{theorem}
+	[Levi-Civita]\label{4Teo3}Let $\left(  M,g\right)  $ be a riemannian
+	manifold. There exists a unique symmetric connection $\nabla$ which is
+	compatible with the metric. Moreover, this connection satisfies:
+	\begin{align}
+	g\left(  Z,\nabla_{Y}X\right)   &  =\frac{1}{2}\left(  Xg\left(  Y,Z\right)
+	+Yg\left(  Z,X\right)  -Zg\left(  X,Y\right)  \right. \nonumber\\
+	&  \left.  -g\left(  \left[  X,Z\right]  ,Y\right)  -g\left(  \left[
+	Y,Z\right]  ,X\right)  -g\left(  \left[  X,Y\right]  ,Z\right)  \right)  .
+	\label{4ec9}%
+	\end{align}
+	
+\end{theorem}
+
+\begin{proof}
+	Any connection compatible with the metric satisfies:
+	\[
+	Xg\left(  Y,Z\right)  =g\left(  \nabla_{X}Y,Z\right)  +g\left(  Y,\nabla
+	_{X}Z\right)  ,
+	\]%
+	\[
+	Yg\left(  Z,X\right)  =g\left(  \nabla_{Y}Z,X\right)  +g\left(  Z,\nabla
+	_{Y}X\right)
+	\]
+	\[
+	Zg\left(  X,Y\right)  =g\left(  \nabla_{Z}X,Y\right)  +g\left(  X,\nabla
+	_{Z}Y\right)  ,
+	\]
+	Adding the first two equations, subtracting the third and using the symmetry one obtains:
+	\begin{align*}
+	&  Xg\left(  Y,Z\right)  +Yg\left(  Z,X\right)  -Zg\left(  X,Y\right) \\
+	&  =g\left(  \left[  X,Z\right]  ,Y\right)  +g\left(  \left[  Y,Z\right]
+	,X\right)  +g\left(  \left[  X,Y\right]  ,Z\right)  +2g\left(  Z,\nabla
+	_{Y}X\right)  ,
+	\end{align*}
+	which implies:
+	\begin{align*}
+	g\left(  Z,\nabla_{Y}X\right)   &  =\frac{1}{2}\left(  Xg\left(  Y,Z\right)
+	+Yg\left(  Z,X\right)  -Zg\left(  X,Y\right)  \right. \\
+	&  \left.  -g\left(  \left[  X,Z\right]  ,Y\right)  -g\left(  \left[
+	Y,Z\right]  ,X\right)  -g\left(  \left[  X,Y\right]  ,Z\right)  \right)  .
+	\end{align*}
+	Since the metric is nondegenerate, this implies uniqueness.
+	In order to prove existence we define  $\nabla_{Y}%
+	X$
+	to be the unique vector field that satisfies Equation (\ref{4ec9}). In order to prove that $\nabla$ defined in this way is a connection, the only nontrivial statement is:
+	\[\nabla_X (fY)=f \nabla_X Y +X(f) Y.\]
+	For this we compute:
+	\begin{align*}
+	g\left(  Z,\nabla_{Y}\left(  fX\right)  \right)   &  =\frac{1}{2}\left(
+	fXg\left(  Y,Z\right)  +Yg\left(  Z,fX\right)  -Zg\left(  fX,Y\right)  \right.
+	\\
+	&  \left.  -g\left(  \left[  fX,Z\right]  ,Y\right)  -g\left(  \left[
+	Y,Z\right]  ,fX\right)  -g\left(  \left[  fX,Y\right]  ,Z\right)  \right)  .
+	\end{align*}
+	Using the equations
+	\[
+	Yg\left(  Z,fX\right)  =\left(  Yf\right)  g\left(  Z,X\right)  +fYg\left(
+	Z,X\right)  ,
+	\]%
+	\[
+	Zg\left(  fX,Y\right)  =\left(  Zf\right)  g\left(  X,Y\right)  +fZg\left(
+	X,Y\right)  ,
+	\]%
+	\[
+	g\left(  \left[  fX,Z\right]  ,Y\right)  =fg\left(  \left[  X,Z\right]
+	,Y\right)  -\left(  Zf\right)  g\left(  X,Y\right)
+	\]
+	%
+	\[
+	g\left(  \left[  fX,Y\right]  ,Z\right)  =fg\left(  \left[  X,Y\right]
+	,Z\right)  -\left(  Yf\right)  g\left(  X,Z\right)
+	\]
+	we obtain:
+	\begin{align*}
+	g\left(  Z,\nabla_{Y}\left(  fX\right)  \right)   &  =fg\left(  Z,\nabla
+	_{Y}X\right)  +\frac{1}{2}\left(  2\left(  Yf\right)  g\left(  Z,X\right)
+	\right) \\
+	&  =g\left(  Z,f\nabla_{Y}X+\left(  Yf\right)  X\right)  .
+	\end{align*}
+	We leave it as an exercise to the reader to prove that $\nabla$ is symmetric and compatible with the metric.
+\end{proof}
+
+
+The connection described above is called the Levi-Civita
+connection \index{Levi-Civita connection} on $(M,g)$.
+
+
+
+\section{Geodesics and the exponential map}
+
+Here we will explain the notions of parallel transport and geodesics. It will be convenient to
+first discuss some natural operations on vector bundles and connections.
+
+\begin{exercise}
+	Let $f:N\rightarrow M$ a smooth function and $\pi:E\rightarrow M$ a vector
+	bundle. Show that the set $f^{\ast}(E)=\coprod_{p\in N}E_{f(p)},$ admits a
+	unique structure of a vector bundle over $N$ such that:
+	
+	\begin{enumerate}
+		\item The map $\tilde{f}:f^{\ast}(E)\rightarrow E;\quad v\in E_{f(p)}\mapsto
+		v\in E_{f(p)}$ is smooth.
+		
+		\item The projection $\pi:f^{\ast}(E)\rightarrow M$ is given by $v\in
+		E_{f(p)}\mapsto p$ .
+		
+		\item The diagram:
+		\[
+		\xymatrix{
+			f^*(E) \ar[r]^{\tilde{f}} \ar[d]_{\pi}& E\ar[d]^{\pi}\\
+			M \ar[r]^{f}& N}
+		\]
+		commutes and is a linear isomorphism on each fiber.
+		
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	Let $\nabla$ be a connection on $\pi:E\rightarrow M$ and $f:N\rightarrow M$ a
+	smooth function. Then there exists a unique connection $f^{\ast}(\nabla)$ on
+	$f^{\ast}(E)$ such that for any $\alpha\in\Gamma(E)$, $X\in\mathfrak{X}(N)$
+	and $Y\in\mathfrak{X}(M)$ with $Df(p)(X(p))=Y(f(p))$ the following holds:
+	\begin{equation}
+	f^{\ast}(\nabla)_{X}(f^{\ast}(\alpha))(p)=\nabla_{Y}(\alpha)(f(p)).
+	\label{pull0}%
+	\end{equation}
+	
+\end{exercise}
+
+
+
+Recall that we say that a section $\alpha\in\Gamma(E)$ of a vector bundle with
+connection is covariantly constant if $\nabla_{X}(\alpha)=0,$ for any vector
+field $X\in\mathfrak{X}(M)$. By imposing this conditions on vector bundles
+over an interval one obtains the notion of parallel transport along a path.
+
+\begin{proposition}
+	Let $\nabla$ be a connection on a vector bundle $\pi:E\rightarrow I$, where
+	$I=[a,b]$ is an interval. Given a vector $v\in E_{a}$ there exists a unique
+	covariantly constant section $\alpha\in\Gamma(E)$ such that $\alpha(a)=v.$
+	Moreover, the function $P_{a}^{b}:E_{a}\rightarrow E_{b}$ given by $P_{a}%
+	^{b}(v)=\alpha(b)$ is a linear isomorphism. The function $P_{a}^{b}$ is called
+	the parallel transport of the connection $\nabla$.
+\end{proposition}
+
+\begin{proof}
+	Since all vector bundles over an interval are trivializable, we may choose a frame $\{\alpha_1,\dots, \alpha_k\}$ for $E$.
+	There exists a one form $\theta \in \Omega^1(I, \mathsf{End}(E))$ such that:
+	\[ \nabla_X (\alpha_i)= \theta(X, \alpha_i).\]
+	Let us fix $v = \sum_i \lambda_i \alpha_i(a) \in E_a$. A section $ \alpha= \sum_i f_i \alpha_i$  is covariantly constant if it satisfies the differential equation:
+	\[ \sum_i \nabla_{\partial_t} (f_i \alpha_i)=0,\]
+	which is equivalent to:
+	\[ \sum_i \frac{\partial f_i}{\partial t} \alpha_i+ f_i\theta( \partial_t, \alpha_i)=0.\]
+	The Picard-Lindel\"of theorem guarantees the existence and uniqueness of a solution of this equation. In order to show that $P_a^b$ is linear it is enough to observe that if $ \alpha$ and $\beta$ are covariantly constant, so is $\alpha + \beta $. It remains to show that  $P_a^b$ is an isomorphism. Suppose that  $v\in E_a$  is such that $P_a^b(v)=0$.
+	By symmetry we know that there exists a unique section  $\alpha \in \Gamma(E)$ such that $\alpha(b)=0$. This section is the zero section and we conclude that $v=0$.
+\end{proof}
+
+
+\begin{definition}
+	Let $\nabla$ be a connection on $\pi:E\rightarrow M$ and $\gamma
+	:[a,b]\rightarrow M$ a smooth curve. The parallel transport along $\gamma$
+	with respect to $\nabla$ is the linear isomorphism:
+	\[
+	P_{\nabla}(\gamma):E_{\gamma(a)}\rightarrow E_{\gamma(b)};\quad P_{\nabla
+	}(\gamma)(v)=P_{a}^{b}(v),
+	\]
+	where $P_{a}^{b}$ denotes the parallel transport associated with the vector
+	bundle $\gamma^{\ast}(E)$ over the interval $I=[a,b]$ with respect to the
+	connection $\gamma^{\ast}(\nabla)$.
+\end{definition}
+
+\begin{lemma}
+	Let $\gamma:[a,c]\rightarrow M$ be a curve and $b\in(a,c)$. Set $\mu
+	=\gamma|_{[a,b]};\quad\sigma=\gamma|_{[b,c]}.$ Then $P_{\nabla}(\gamma
+	)=P_{\nabla}(\sigma)\circ P_{\nabla}(\mu).$
+\end{lemma}
+
+\begin{proof}
+	It is enough to observe that if $\alpha \in \Gamma(\gamma^*(E))$ is covariantly constant then $ \alpha\vert_{[a,b]}$ and $\alpha\vert_{[b,c]}$ are also covariantly constant.
+\end{proof}
+
+
+\begin{exercise}
+	Show that parallel transport is parametrization invariant. That is, if $\nabla$ is a
+	connection on $\pi:E\rightarrow M$, $\gamma:[a,b]\rightarrow M$ is a curve and
+	$\varphi:[c,d]\rightarrow\lbrack a,b]$ is an orientation preserving
+	diffeomorphism then $P_{\nabla}(\gamma)=P_{\nabla}(\gamma\circ\varphi).$
+\end{exercise}
+
+
+\begin{definition}
+	Let $\nabla$ be a connection on $TM$. A curve $\gamma:[a,b]\rightarrow M$ is called a geodesic if the
+	section $\gamma' \in \Gamma( \gamma^*(TM))$ is covariantly constant with respect to the
+	connection $\gamma^{\ast}(\nabla)$.
+\end{definition}
+
+In local coordinates $\varphi=(x^{1},\dots,x^{m})$ where $\gamma=(u_{1}%
+,\dots,u_{m})$ and $\nabla$ has Christoffel symbols $\Gamma_{ij}^{k}$ one has
+$\gamma^{\prime}(t)=\sum_{i}u_{i}^{\prime}(t)\partial_{i},$
+and the geodesic equation takes the form:
+\begin{align*}
+\gamma^{\ast}(\nabla)_{\partial_{t}}(\gamma^{\prime}(t))  &  =\sum_{i}%
+\gamma^{\ast}(\nabla)_{\partial_{t}}(u_{i}^{\prime}(t)\partial_{i})\\
+&  =\sum_{i}\Big(u_{i}^{\prime\prime}(t)\partial_{i}+u_{i}^{\prime}%
+(t)\gamma^{\ast}(\nabla)_{\partial_{t}}\partial_{i}\Big)\\
+&  =\sum_{i}\Big(u_{i}^{\prime\prime}(t)\partial_{i}+u_{i}^{\prime}(t)\sum
+_{j}u_{j}^{\prime}(t)\nabla_{\partial_{j}}\partial_{i}\Big)\\
+&  =\sum_{i}\Big(u_{i}^{\prime\prime}(t)\partial_{i}+u_{i}^{\prime}%
+(t)\sum_{j,k}u_{j}^{\prime}(t)\Gamma_{ij}^{k}\partial_{k}\Big).
+\end{align*}
+We conclude that $\gamma$ is a geodesic precisely when it satisfies the system
+of differential equations:
+\begin{equation}
+u_{i}^{\prime\prime}(t)+\sum_{j,k}u_{j}^{\prime}(t)u_{k}^{\prime}%
+(t)\Gamma_{kj}^{i}=0,\,\,  \forall i.
+\end{equation}
+
+
+\begin{example}
+	On Euclidian space $\mathbb{R}^{m}$ the Christoffel symbols are $\Gamma
+	_{ij}^{k}=0,$ and therefore the differential equation for a geodesic is just
+	$u_{i}^{\prime\prime}(t)=0.$ We conclude that geodesics in euclidean space are
+	straight lines.
+\end{example}
+
+\begin{theorem}
+	Let $\nabla$ be a connection on $TM$. Given $v\in T_{p}M$, there
+	exists an interval $\left(  -\epsilon,\epsilon\right)  $ for which there is a
+	unique geodesic $\gamma:\left(  -\epsilon,\epsilon\right)  \rightarrow M$ such
+	that $\gamma\left(  0\right)  =p$ and $\gamma^{\prime}(0)=v$.
+\end{theorem}
+
+\begin{proof}
+	Let $\varphi =(x^1,\dots, x^m)$  be local coordinates such that $\varphi(p)=0$. We  write $\gamma(t)=(u_1(t),\dots,u_m(t))$ and want to solve the system of equations:
+	\[ u''_i(t) + \sum_{j,k} u'_j(t) u'_k(t) \Gamma_{kj}^i  =0.\]
+	This is a second order ordinary differential equation. The existence and uniqueness of solutions is guaranteed by the Pickard-Lindel\"of theorem.
+\end{proof}
+
+
+\begin{definition}
+	Let $\nabla$ be a connection on $TM$ and $ p \in M$. We define $A_p \subseteq T_pM$ as follows:
+	\[\ A_p:= \{ v\in T_pM: \text{there exists a geodesic } \gamma_v: [-1,1] \rightarrow M, \text{ with } \gamma_v(0)=p \text{ and }  \gamma_v'(0)=v\}.\]
+	The exponential map is defined by:
+	\[ \mathsf{Exp_p}: A_p \rightarrow M; \, v \mapsto \gamma_v(1).\]
+\end{definition}
+The proof of the following theorem can be found in any text on riemannian geometry, for example \cite{riemannian}.
+\begin{theorem}
+	Let $\nabla$ be a connection on $TM$ and $ p \in M$. The domain $A_p$ of the exponential map contains an open
+	neighborhood around $0 \in T_pM$. Moreover, the derivative of the exponential map at $0$ is the identity and therefore the exponential map is a local diffeomorphism.
+\end{theorem}
+
+
+\section{Principal bundle}
+	\begin{definition}
+	An action of a group  $G$ on a manifold  $M$ is a smooth function 
+	\begin{align*}
+	\mu &: M \times G  \longrightarrow M \\
+	&\quad (m,g) \longmapsto m\cdot g
+	\end{align*}
+	such that:
+	$m \cdot e=m$ y $(m \cdot g)h=m\cdot(gh)$. In particular, $\mu$ is a called free action if, for all $m\in M$, $mg=m$ implies $g=e$.
+\end{definition}
+
+
+A principal $G$-bundle, where $G$ is any Lie group, is a surjective submersion $\pi: P \to M$ equipped with smooth action of $G$ on $P$ that satisfies:
+\begin{enumerate}[(i)]
+	\item The action is free.
+	\item $\pi(mg)=\pi(m)$.
+	\item If $\pi(m)=\pi(m')$ then $m=m'g$.
+\end{enumerate}
+Since $\pi$ is a submersion then for all $q\in M$, $ \pi^{-1}(q)$ is a manifold of dimension \linebreak{$d=dim(P)-dim(M)$}.\\
+
+\subsection{Some properties of principal bundle}
+\begin{theorem}
+	Every fiber of the principal $G$-bundle is diffeomorphic to $G$.
+\end{theorem}
+\begin{proof} The following function is a diffeomorphism
+	\begin{align*}
+	\psi &: G \longrightarrow \pi^{-1}(q) \\
+	&\quad g \longmapsto pg
+	\end{align*}
+\end{proof}
+
+
+		\begin{theorem}
+	Let $\pi: P \to M $ be a principal  $G$-bundle, then there are a natural identification $P/G  \xrightarrow[\tilde{\pi}]{\sim} M$, in particular $P/G \cong M$.
+\end{theorem}
+
+A priori $P/G$ has structure of the topological space, then we give to $P/G$ differential structure induced by $\tilde{\pi}$.
+
+\begin{theorem} Every principal bundle is locally isomorphic to the trivial bundle.
+\end{theorem}
+\begin{proof}
+Let  $P \to M$ be a principal bundle, then for every $q \in M$ there exists a open \linebreak{$q \in U \subseteq M$} and  $\sigma: U \to P$ such that $\pi \circ \sigma=id$.\\
+The following function is a diffeomorphism:
+	$$\begin{array}{crcl}
+\tau &: U \times G & \longrightarrow & \pi^{-1}(U) \\
+& (x,g) & \mapsto & \sigma(x)\cdot g
+\end{array}$$
+\end{proof}
+
+\subsection{Frame bundles and Associated bundle}
+If $\pi:E \to M$ is a complex vector bundle over $M$ of rank $k$, then the geometry structure that contains information about the set of all ordered bases (or frames) for a fiber of $E$ is called frame bundle, more specifically, a frame bundle is a principal bundle with structural group $GL(\mathbb{C}^{k})$:
+
+	$$\begin{array}{crcl}
+\rho &: Fr(E) & \longrightarrow & M \\
+& \varphi & \mapsto & p
+\end{array}$$
+
+Where $\displaystyle{Fr(E):=\coprod_{p\in M} ISO(\mathbb{C}^{k},E_{p})}$, $\varphi: \mathbb{C}^{k} \to E_{p}$ is a isomorphism and the action of $GL(\mathbb{C}^{k})$ on $Fr(E)$ is given by conjugation.\\
+
+If a vector bundle $E$ is equipped with a Riemannian bundle metric, then the orthonormal frame bundle of $E$ is $\displaystyle{Fr{O}(E):=\coprod_{p\in M} ISO^{O}(\mathbb{R}^{k},E_{p})}$, the set of all orthonormal frames at each fiber with structural group $O(k)$.\\
+In similar form, if a vector bundle $E$ is equipped with a hermitian bundle metric, then the hermitian frame bundle is  $\displaystyle{Fr{U}(E):=\coprod_{p\in M} ISO^{U}(\mathbb{C}^{k},E_{p})}$ with structural group $U(k)$.\\
+
+Let us now consider a principal $G$-bundle $\pi :P \to M$ and a representation $\rho :G \to Aut(V)$ of group $G$, then it is possible to construct a vector bundle over $M$, denoted associated bundle.\\
+Note that $G$ acts on $P \times V$, for $g \in G$, $(p,v) \in P\times V$, $(p,v) \cdot g= (p\cdot g, \rho(g^{-1})(v))$, then $P \times_{G} V:= P \times V/G$ where $(p\cdot g,v) \sim (p,\rho(g)(v))$.\\
+The following submersion $\tilde{\pi}:P \times_{G} V \to M$  is a vector bundle:
+	$$\begin{array}{crcl}
+\tilde{\pi} &: P \times_{G} V & \longrightarrow & M \\
+& (p,v) & \mapsto & \pi(p)
+\end{array}$$
+
+When the structural group is  $GL(n,\mathbb{C})$ and the representation is $id$, the construction of associated bundle is inverse to it of frame bundle. 
+
+\section{Connection on a principal bundle}
+\begin{definition}
+	A distribution $E$ on $M$ is a subbundle of the tangent bundle and if  \linebreak{$\Upgamma(E) \subseteq \Upgamma(TM)$} is a Lie subalgebra then $E$ is called foliation. 
+\end{definition}
+	\begin{definition}
+	Let  $\pi: X \to Y$ be a submersion,then  a Ehresmann connection is a distribution $\mathcal{H} \subseteq TX$ such that every $p\in X$, $\mathcal{H}(p) \oplus Ker(d\pi)=TX$.
+\end{definition}
+\begin{theorem}
+	$Ker(d\pi)$ is a foliation.
+\end{theorem}
+
+
+\begin{definition}
+	Let $P \to M$ be a principal $G$-bundle over a manifold $M$, a connection on $P$ is a Eheresmann connection  which is $G$-equivariant, in other words, for $q=pg$, $D(R_{g})(p)(H_{p})=H_{q}$.
+\end{definition}
+
+\begin{theorem}
+	There exists an isomosphism between the bundles $Ker(d\pi)$ and $P \times \mathfrak{g}$.
+\end{theorem}
+\begin{proof}
+	Since that  $P \to M$ is a principal  $G$-bundle, there exists a function: 
+	$$\begin{array}{crcl}
+	\mu: & \mathfrak{g} & \longrightarrow & \mathfrak{X}(P) \\
+	& v & \mapsto & v^{*}
+	\end{array}$$
+	Where  $v^{*}(p)=\frac{d}{dt} \big |_{t=0} p\cdot exp(tv)$.\\
+	It is easy to check that  $\mu$ is a Lie algebras homomorphism. \\
+	In fact the following function is linear isomorphism:
+	 $$\begin{array}{crcl}
+	\mu_{p} :& \mathfrak{g} & \longrightarrow & Ker(d\pi(p)) \\
+	& v & \mapsto & v^{*}(p)
+	\end{array}$$
+	Note that $dim(\mathfrak{g})=dim(Ker(d\pi))$, then prove that $\mu_{p}$ is a injective function is enough to prove that it is bijective.
+	Let $\mu_{p}(v)=0=v^{*}(p)=\frac{d}{dt}\big|_{t=0} p\cdot exp(tv) $. \\
+	\begin{align*}
+	\frac{d}{dt}\big|_{t=t_{0}} p\cdot exp(tv)&=\frac{d}{dz}\big|_{z=0} p\cdot exp((z+t_{0})v)\\&=\frac{d}{dz}\big|_{z=0} p\cdot exp(tv) \cdot exp(t_{0}v)\\&=D\left(R_{exp(t_{0}v)}\right) \left(\frac{d}{dz}\big|_{z=0} p\cdot exp(zv)\right)\\&=D(R_{exp(t_{0}v)})(0)=0
+	\end{align*}\\
+	Then $v=0$.
+\end{proof}
+
+To continue, we identify a connection $\mathcal{H}$ on a principal bundle $P$ with a $1$-form Lie algebra-valued form on $P$, with the aim of making calculations  of connections more easy.
+
+\begin{theorem} 
+	Let $\mathcal{H} \subseteq TP$ be a connection on $P$ then for each $p \in P$, $T_{p}P= \mathfrak{g} \oplus T_{\pi(p)}M$. 
+\end{theorem}
+\begin{proof}
+	Previous results have demonstrated that:
+	\begin{align*}
+	T_{p}P=Ker(d\pi(p))\oplus \mathcal{H}_{p} \quad y \quad Ker(d\pi(p))=\mathfrak{g}
+	\end{align*} 
+	Furthermore the following function is a linear isomorphism
+	\begin{align*}
+	d\pi_{p}: \mathcal{H}_{p} \xrightarrow{\sim} T_{\pi(p)}M
+	\end{align*}
+\end{proof}
+ Therefore if $\mathcal{H}\subseteq TP$  is a connection on $P$ then there exits a $1$-form $\theta \in \Upomega^{1}(P,\mathfrak{g})$ that satisfy:
+ \begin{enumerate}[$\cdot$]
+ 	\item $\theta(v^{*}(p))=v$.
+ 	\item $\theta$ is equivariant.
+ \end{enumerate}
+ The $1$-form $\theta$ is defined as $\theta(p)(x)=v$, where $v \in \mathfrak{g}$ is the unique vector such that $v*(p)=x^{v}$ in the decomposition $T_{p}P= \mathfrak{g} \oplus T_{\pi(p)}M$, for $x \in T_{p}P$, $x=x^{v}+x^{h}$.
+
+Conversely if $\theta \in \Omega^{1}(P,\mathfrak{g})$ is a $1$-form equivariant such that $\theta(v^{*}(p))=p$ then there exists a connection in $P$ given by $Ker(\theta)$.
+
+
+\section{Curvatute on a principal bundle}
+\begin{definition}
+	A horizontal form of a principal bundle $\pi: P \to M$ is a form $\theta \in \Omega(M)$ such that $\theta(p)(x_1,x_2,...,x_n)=0$ if any $x_i \in Ker(d\pi)$
+\end{definition}
+\begin{definition}
+	A differential graded  Lie algebra (dgla) is a graded vector space $\mathfrak{g} =\oplus_{k \geqslant 0} \mathfrak{g}^{k}$ with added Lie algebra and chain complex structures that are compatible, i.e. is a graded vector space together with a linear map $[,]:\mathfrak{g}^{i} \otimes \mathfrak{g}^{j} \to \mathfrak{g}^{i+j} $ and a differential map $\delta: \mathfrak{g}^{k}\to \mathfrak{g}^{k+1}$ satisfying:
+	\begin{enumerate}[i]
+		\item $[v,w]+(-1)^{|v||w|}[w,v] =0$ (graded skew-symmetric)
+		\item $[v,[w,z]]=[[v,w],z]+(-1)^{|v||w|}[w,[v,z]]$ (Jacobi Identity)
+		\item $\delta([v,w])=[\delta v, w]+(-1)^{|v|}[v, \delta w]$ (graded Leibniz rule)
+		\item $\delta \circ \delta=0$
+	\end{enumerate}
+\end{definition}
+
+Since $\Omega^{even}(P)$ is a commutative differential graded algebra and $\mathfrak{g}$ a Lie algebra, \linebreak{ $\Omega(P, \mathfrak{g}) \cong \Omega(P)\otimes \mathfrak{g} $} is a dgla together with the maps: $\delta(\theta \otimes v)=d\theta \otimes v$ and \linebreak{$[\theta \otimes v, \omega \otimes w]= \theta \omega  \otimes [v,w]$}.\\
+
+ Let $\mathfrak{h}$ be a dgla and a connection $1$-form $\theta \in \Omega^{1}(P, \mathfrak{g})$, then the curvature of $\theta$, $F_{\theta}$ is a Lie algbra-valued $2$-form defined by: $F_{\theta}=d\theta+\frac{1}{2}[\theta,\theta]$.\\
+ A manifold is said to be flat if its curvature is everywhere zero.\\
+ 
+ The curvature on a principal bundle  satisfies the following properties:
+ \begin{enumerate}[i]
+ 	\item $d(F_{\theta})+[\theta,F_{\theta}]=0$ (Bianchi Identity)
+ 	\item $F_{\theta}$ is a equivariant and horizontal form.
+ 	\item $\theta$ is a foliation if only if M is a flat manifold.
+ 
+  \end{enumerate}
+
+\section{Chern-Weil Homomorphism}
+The purpose of this section in to give a brief introduction to the Chern-Weil theory of characteristic classes, which was developed by Shiing-Shen Chern and André Weil  in the first half of the 20th century. For each principal $G$-bundle over a manifold $M$ we want to construct a homomorphism from $G$- invariant polynomials to cohomology of $M$.\\
+Let $\pi: P \to M$ be a principal $G$-bundle over M together with a connection $\theta$, then the curvature $F_{\theta}$ determines a homomorphism of algebras given by:
+ $$\begin{array}{crcl}
+\Phi :& S(\mathfrak{g}^{*}) \quad & \longrightarrow & \Omega(P) \\
+& \alpha_{1} \odot \dots \odot \alpha_{k} & \mapsto & \phi(\alpha_{1}) \wedge \dots \wedge \phi(\alpha_{k}).
+\end{array}$$
+Where $\Phi(\alpha_{i})(X,Y)=\alpha_{i}(F_{\theta}(X,Y))$ and $S(\mathfrak{g}^{*}) $ denote the symmetric algebra of $\mathfrak{g}^{*}$.
+
+\begin{theorem}
+	Let $\pi: P \to M$ be a principal $G$-bundle together with a connection $\theta$, then the homomorphism $\phi$ defined above satisfies:
+	\begin{enumerate}
+	\item $\Phi(S(\mathfrak{g}^{*})^{G}) \subseteq \Omega(P)^{G}$.
+	\item Each form of  $\Phi(S(\mathfrak{g})^{*})$ is horizontal.
+	\item $\Omega^{bas}(P) \cong \Omega(M)$.
+	\item $d(\Phi(S(\mathfrak{g}^{*})))=0$. 
+	\end{enumerate}
+Here $\Omega^{bas}(P)$ denote the set of horizontal and equivariant forms of $P$, it is called basic forms.
+\end{theorem}
+
+
+\begin{proof}
+\begin{enumerate}
+	\item We will prove that $\Phi: S(\mathfrak{g}^{*})^{G} \to \Omega(P)$ is equivariant, in particular \linebreak{$\Phi(S(\mathfrak{g}^{*})^{G}) \subseteq \Omega(P)^{G}$}.\\
+	$\Phi(g \cdot \alpha)(X,Y)=(g \cdot \alpha )(F(X,Y))= \alpha \circ Ad(g^{-1})F(X,Y)=\alpha(F(DR_{g}X,DR_{g}Y))=g \cdot(\Phi(\alpha))(X,Y)$
+	\item It is enough to note that for $\varphi \in \mathfrak{g}^{*}$, $\Phi(\varphi)$ is horizontal. Then for any $X$ vertical, $\Phi(\varphi)(X,Y)=\varphi(F(X,Y))=\varphi(0)=0$.
+	\item Consider the principal $G$-bundle $\pi: P \to M$ then there exist a algebra homomorphism $\pi^{*}: \Omega(M) \to \Omega(P)$. In fact $\pi^{*}$ is injective because if $\pi^{*}(\theta)(p)(X_{1},...,X_{k})=0$ for every $p\in P$ and $X_{1},...,X_{k} \in T_{p}P$, $\theta(\pi(p))(D\pi(X_{1},...,D\pi(X_{k})))=0$ then  $\theta(\pi(p))(Y_{1},...,Y_{k})=0$ every $\pi(p) \in M$ and $Y_{1},...,Y_{k} \in T_{\pi} \in T_{\pi(p)}M$.\\
+	The homomorphism $\pi^{*}$ is surjective when we restrict the codomain to the set of horizontal and equivariant forms. The surjective of this is verified with the following lemma when we consider the trivial representation.\\
+	\begin{lemma}
+		Let $\pi: P \to M$ be a principal $G$-bundle and a representation of $G$ $\rho:G \to GL(V)$ then there the horizontal and equivariant forms of $\Omega(P,V)$ are in a one to one correspondence with forms of $\Omega(M,\rho(P))$, where $\rho(P)$ denotes the bundle $P\times_{G}V$.
+	\end{lemma}
+	\begin{proof}
+		Consider the function:
+$$\begin{array}{crclccc}
+& \left\{\begin{array}{cc}
+& \omega \in \Omega(P,V) \quad \text{such that} \\
+& \omega \quad \text{is horizontal}\\
+& \text{and equivariant}
+\end{array}
+\right\}    & \xrightarrow{\psi} & \Omega(M,\rho(P)); &\theta & \mapsto & \psi(\theta).
+\end{array}$$
+Defined by $\psi(\theta)(y)(X_{1},...,X_{k})=[(p, \theta(p)(\tilde{X_{1}},...,\tilde{X_{k}})]$ where $p \in \pi^{-1}(y)$ and \linebreak{ $D\pi(\tilde{X_{i}})=X_{i}$}. The well defined of this function is given by the condition of $\theta$ be a horizontal and equivariant form.  Note that the pullback of differential forms is the inverse function to this $\psi$.
+ 
+
+	\end{proof}
+
+\item Let $\varphi \in \mathfrak{g}^{*}$ and $X_{1},X_{2},X_{3}$ horizontal vectors, then 
+$$d\big(\Phi(\varphi)\big)(X_1,X_2,X_3)=\varphi\big(dF(X_1,X_2,X_3)\big)=-\dfrac{1}{2}\varphi\big([\theta,F](X_1,X_2,X_3)\big)$$
+$$=-\dfrac{1}{2}\varphi\big([\cancelto{\mbox{\footnotesize 0}}{\theta(X_1)},~\, F(X_2,X_3)]-[\can{\theta(X_3)},~\, F(X_1,X_2)]+[\can{\theta(X_2)},~\, F(X_3,X_1)]\big)=0$$
+By induction, it follows  $d\big(\Phi(\varphi_1)\wedge\dots\wedge \Phi(\varphi_k)\big)=0$.
+
+\end{enumerate}
+\end{proof}
+
+In the following steps we will construct the Chern- Weil homomorphism:
+\begin{itemize}
+\item Given a connection $\theta$ of a principal $G$-bundle, its curvature $F_{\theta}$ there exists a algebras homomorphism  $S(\mathfrak{g}^*)\overset{\Phi}{\longrightarrow}\Omega(P)$.
+\item We proved that this homomorphism is equivariant and its image is a set of basic forms.
+\item Use the isomorphism $\Omega(P)^{bas}\cong\Omega(M)$ to extender $\Phi$:
+\begin{center}
+	\begin{tikzcd}[cramped, row sep=0.1cm, column sep=0.5 cm]
+		& S(\mathfrak{g}^*)\ar[r]\ar[rr,"\Phi", bend left]&\Omega(P)^{bas}\ar[r, "\cong" '] & \Omega(M).
+	\end{tikzcd}
+\end{center}
+\item By the last theorem, the image of $\Phi$ is a set of the closed forms in $\Omega(M)$ and therefore we can extend the function $\Phi$ to the De Rham cohomology of $M$ via natural projection: 
+\begin{center}
+	\begin{tikzcd}[cramped, row sep=0.1cm, column sep=0.5 cm]
+		&S(\mathfrak{g}^*)\ar[r]\ar[rrr,"\Phi", bend left]&\Omega(P)^{bas}\ar[r, "\cong" ']&\Omega(M)\ar[r]&H^*(M).
+	\end{tikzcd}
+\end{center}
+\item Finally we restrict the domain of $\Phi$ to $S(\mathfrak{g}^*)^G$ and we obtain the Chern-Weil homomorphism:
+$$\Phi: S(\mathfrak{g}^{*})^{G} \to H^{*}(M)$$.
+\end{itemize}
+
+
+\section{Curvature and the Chern-Gauss-Bonnet Theorem}
+
+The Gauss-Bonnet theorem provides a formula for the Euler characteristic of a closed oriented surface $\Sigma$:
+\[ \chi(\Sigma)= \frac{1}{2\pi} \int_\sigma K dA.\]
+
+Here $K$ denotes the Gaussian curvature of $\Sigma$ associated to a riemannian metric and $dA$ is the volume form determined by the metric and the orientation. This formula is remarkable because while the left hand side evidently depends only on the topology of $\Sigma$, the right hand side is a priori a geometric quantity. The extension of this formula to higher dimensions had to wait almost 200 years until the language of differential geometry was developed and Chern \cite{Chern} proved his generalised version of the Gauss-Bonnet theorem. The first obstruction that needs to be overcome in order to state a correct generelisation is to find a replacement for the gaussian curvature. This is provided by the Riemann curvature tensor.
+
+\begin{definition}
+	Let $\nabla$ be a connection on $TM$. The riemannian curvature of $\nabla$ is the map:
+	\[ R: \mathfrak{X}(M) \otimes \mathfrak{X}(M) \otimes \mathfrak{X}(M) \rightarrow \mathfrak{X}(M),\]
+	given by:
+	\[ R_\nabla (X,Y,Z):= \nabla_X (\nabla_Y Z)- \nabla_Y (\nabla_X Z)- \nabla_{[X,Y]}Z.\]
+	A simple computation shows that this map is $C^\infty(M)$-linear in all the components and skew symmetric in $X$ and $Y$. Therefore, it defines a tensor:
+	\[ R_\nabla \in \Omega^2(M, \mathsf{End}(TM))\]
+	which is called the Riemann curvature tensor. A connection $\nabla$ is said to be flat if $R_\nabla=0.$
+\end{definition}
+ Mostrar la relación que hay entre la dos forma, curvatura definida para un G fibrado principal en general yla definición anterior, las definiciones son compatibles. 
+ 
+ En el que caso que una superficie admita la metrica de LEvi-Civita, se cumple la conjetura por la siguiente observación:
+\begin{exercise}
+	Show that if $\nabla$ is the Levi-Civita connection of a riemannian manifold then for any pair of tangent vectors
+	$v,w \in T_pM$, the map:
+	\[ R_\nabla(v,w,-): T_pM \rightarrow T_pM\]
+	is antisymmetric, i.e.:
+	\[  \langle R_\nabla(v,w,z), z \rangle =0.\]
+	This is one of the Bianchi identities.
+\end{exercise}
+
+Enunciar el teorema de chern gauss bonnet en su forma general, lo que hay abajo.
+
+\begin{exercise} Let $ \mathfrak{so}(2n) $ be the Lie algebra of skew symmetric matrices.
+	The Pfaffian polynomial: \[\mathsf{Pf}: \mathfrak{so}(2n) \rightarrow \R,\] is defined by the formula:
+	
+	\[ \mathsf{Pf}(A)= \frac{1}{n!2^n }\sum_{\sigma \in S_{2n}} sg(\sigma) \prod_{i=1}^n a_{\sigma(2i-1),\sigma(2i)}.\]
+	Show that for $B \in \mathsf{End}(\R^{2n})$ and $ A \in \mathfrak{so}(2n)$ the following holds:
+	\begin{itemize}
+		\item[(a)] \[ \mathsf{Pf}(B A B^t)= \det(B) \mathsf{Pf}(A).\]
+		\item[(b)] \[ \mathsf{Pf}(A)^2= \det(A).\]
+	\end{itemize}
+	In particular, if $B \in SO(n)$ then:
+	\[ \mathsf{Pf}(B A B^{-1})= \mathsf{Pf}(A).\]
+\end{exercise}
+
+
+\begin{exercise}
+	Let $V$ be a real vector space of dimension $2n$ and $ \langle \,, \rangle$ an inner product in $V$. Let $\mathfrak{so}(V)$ be the space of antisymmetric endomorphisms of $V$. That is:
+	\[ \mathfrak{so}(V):=\{ \phi: V \rightarrow V: \langle v , \phi(v)\rangle=0\}.\]
+	Let $\mathsf{P}(A)=\mathsf{P}(a_{ij}): \mathfrak{so}(2n) \rightarrow \R$ be a polynomial which is invariant under the action of $SO(2n)$ i.e. such that:
+	\[ P(BAB^{-1})=P(A)\]
+	for all $B \in SO(2n)$. Fix an orthonormal basis $\{ e_1, \dots, e_{2n}\}$ for $V$. For any $\omega \in \Lambda^2 (V^*) \otimes \mathfrak{so}(V)$ define $\omega_{ij} \in \Lambda^2(V^*)$ by the formula:
+	\[ \omega_{ij}(v,w):=\langle \omega(v,w)(e_i), e_j \rangle.\]
+	Show that $\mathsf{P}(\omega):= \mathsf{P}(\omega_{ij})\in \Lambda(V^*)$ does not depend on the choice of orthonormal basis.
+\end{exercise}
+
+
+The previous exercise shows that for any riemannian manifold $(M,g)$ of dimension $2n$ there is a well defined form $\mathsf{Pf}(K)\in \Omega^{2n}(M)$ which is defined by:
+\[ \mathsf{Pf}(K)(p):= \mathsf{Pf}(K(p))\in \Lambda^{2n}(T^*_pM).\]
+This differential form is what needs to be integrated over $M$ to obtain the Euler characteristic:
+
+\begin{theorem}[Chern-Gauss-Bonnet]
+	Let $(M,g)$ be a closed oriented riemannian manifold of dimension $d=2m$ and $R$ the curvature of the Levi-Civita connection. Then:
+	\[ \chi(M)=\Big(\frac{1}{2\pi}\Big)^n \int_M \mathsf{Pf}(K).\]
+\end{theorem}
+
+Of course, in case the dimension of $M$ is odd, the Euler characteristic vanishes by Poincar\'e duality.

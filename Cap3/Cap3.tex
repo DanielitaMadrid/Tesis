@@ -1,0 +1,150 @@
+Chern's conjecture asks about the Euler characteristic of closed affine manifolds. For a while, it was not known whether the condition that the connection is torsion free was essential.
+\begin{definition}
+	A manifold $M$ is said to be flat if its tangent bundle admits a flat connection.
+\end{definition}
+
+A strong version of Chern's conjecture asking whether the Euler characteristic of a closed flat manifold vanishes was an open problem for a while. This question was answered by Smillie \cite{Smillie}, who proved the following:
+
+
+\begin{theoremnn}[Smillie]
+	For each $n>1$ there are closed flat manifolds $M^{2n}$ which have non-zero Euler characteristic.
+\end{theoremnn}
+
+In what follows we will present Smillie's construction.
+\begin{definition}
+	We will say that a vector bundle $\pi:E \rightarrow M$ is almost trivial if \[E \oplus \R\simeq \R^m.\]
+	We will say that $M$ is almost parallelizable if $TM$ is almost trivial.
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+\begin{lemma}\label{pull}
+	An oriented vector bundle $\pi: E \rightarrow M$ is almost parallelizable if and only if there exists a function $f: M \rightarrow S^m$ such that:
+	\[ f^*(TS^m)\simeq E.\]
+\end{lemma}
+
+\begin{proof} Since $TS^m$ is almost parallelizable, so is $f^*(TS^m)$.
+	On the other hand, suppose that $E$ is almost parallelizable. Once we fix an isomorphism
+	\[ \varphi: E \oplus \R \simeq \R^{m+1},\]
+	there is a unique smooth function $f: M \rightarrow S^m$ such that:
+	\begin{itemize}
+		\item $f(p) \in \varphi(p)(E_p)^\bot$.
+		\item If $\{e_1, \dots , e_m\}$ is an oriented basis for $E_p$ then \[\{ f(p), \varphi(p)(e_1),\dots, \varphi(p)(e_m)\}\] is
+		an oriented basis for $\R^{m+1}$.
+	\end{itemize}
+	By construction $\varphi$ restricts to an isomorphism from $E$ to $f^*(TS^m)$.
+\end{proof}
+
+\begin{exercise}\label{emb}
+	Show that there exists an embedding:
+	\[ \iota:S^m \times S^n \rightarrow \R^{m+n+1}\]
+	with trivial normal bundle. Conclude that $S^m \times S^n$ is almost parallelizable.
+\end{exercise}
+\begin{lemma}\label{product}
+	Let $\pi_1: E \rightarrow M$ and $\pi_2: E' \rightarrow N$ be almost trivial vector bundles. Then the vector bundle ${p_1}^*E \oplus {p_2}^*E'$ over $M \times N$ is almost trivial. \end{lemma}
+\begin{proof}
+	By Lemma \ref{pull} there exist functions $f: M \rightarrow S^m$ and $g: N \rightarrow S^n$ such that:
+	\[ E\simeq f^*(TS^m); \text{ and } E'\simeq g^*(TS^n).\]
+	By Exercise \ref{emb} there exists a function $h: S^m \times S^n \rightarrow S^{m+n}$ such that:
+	\[ h^*(TS^{m+n})=T(S^m \times S^n).\]
+	Then:
+	\[ (h \circ (f\times g))^*(TS^{m+n})=(f\times g)^* (h^*(TS^{m+n}))=(f \times g)^*(T(S^m \times S^n))={p_1}^*E \oplus {p_2}^*E.\]
+	By Lemma \ref{pull} we conclude that ${p_1}^*E \oplus {p_2}^*E$ is almost trivial.
+\end{proof}
+
+
+\begin{definition}
+	Let $M,N$ be closed oriented manifolds of dimension $m$ and $f: M \rightarrow N$ be a smooth function.
+	The degree of $f$ is the number:
+	\[ \mathsf{deg}(f):= \int_M f^*(\omega)\]
+	where $\omega$ is any $m$-form on $N$ such that:
+	\[ \int_{N} \omega=1.\]
+\end{definition}
+
+\begin{exercise}
+	Prove that the number $\mathsf{deg}(f)$ defined above is an integer that does not depend on the choice of $\omega$.
+	Show that if $f$ and $g$ are smoothly homotopic then they have the same degree. \end{exercise}
+
+It turns out that the degree is a complete invariant of maps from a closed oriented $m$-manifold to $S^m$. This is a theorem of Heinz Hopf whose proof can be found in \cite{BT}.
+
+\begin{theorem} [Hopf Degree Theorem] Let $M$ be a closed, connected, oriented
+	$m$-dimensional manifold and $f,g:M \rightarrow S^m$ be smooth maps.
+	Then $f$ and $g$ are smoothly homotopic if and only if they have the same degree.
+\end{theorem}
+
+
+\begin{lemma}\label{Euler}
+	Let $M$ be a closed oriented manifold of dimension $m$ and $E,E'$ oriented almost trivial vector bundles of rank $m$.
+	Then $E$ and $E'$ are isomorphic if and only if they have the same Euler class.
+\end{lemma}
+\begin{proof}
+	Clearly, if the bundles are isomorphic they have the same Euler class. Let us prove the converse. By Lemma \ref{pull}
+	we know that there are functions $f,g:M \rightarrow S^m$ such that:
+	\[ f^*(TS^m) \simeq E; \text{ and } g^*(TS^m)\simeq E'.\]
+	Since $E$ and $E'$ have the same Euler class we conclude that $f$ and $g$ have the same degree. The Hopf degree theorem implies that $f$ and $g$ are smoothly homotopic and therefore $E $ is isomorphic to $E'$.
+\end{proof}
+
+\begin{lemma}\label{connected}
+	The connected sum of almost parallelizable manifolds is almost parallelizable.
+\end{lemma}
+\begin{proof}
+	Let $f:M \rightarrow S^m$ and $g: N \rightarrow S^m$ be smooth maps such that:
+	\[ f^*(TS^m) \simeq TM; \text{ and } g^*(TS^m)\simeq TN.\]
+	Fix $p \in M$  and $q \in N$ and coordinates $\varphi: U \rightarrow \R^m$ and $\phi: W \rightarrow \R^m$ around
+	$p$ and $q$ respectively. Set $X=\varphi^{-1}(B(0,1))\subseteq U$ and $Y= \phi^{-1}(B(0,1))\subseteq W$. Since $\pi_{m-1}(S^m)=0$ we may assume that:
+	\[ (f \circ \varphi^{-1})\vert_{S^{m-1}}=(g \circ \phi^{-1}) \vert_{S^{m-1}}.\]
+	
+	Then there is a well defined map
+	\[ h: M\#N \rightarrow S^m\]
+	such that $h\vert_{M-X}=f$ and $h\vert_{N-Y}=g$. We conclude that \[ h^*(TS^m)\simeq T(M \#N)\]
+	and therefore $M \#N$ is almost parallelizable.
+\end{proof}
+
+
+\begin{theorem}[Smillie]
+	Let $\Sigma_g$ be the closed oriented surface of genus $g$ and $P= S^1 \times S^3$. Then:
+	\[M^4= (\Sigma_3 \times \Sigma_3)\# \underbrace{ P\# \cdots \#P}_{6\text{ times}}\]
+	and
+	\[M^6=((\Sigma_3 \times \Sigma_3)\# \underbrace{ P\# \cdots \#P}_{9\text{ times}})\times \Sigma_3\]
+	are closed flat manifolds with non-zero Euler characteristic. By taking products of $M^4$ and $M^6$ one obtains
+	closed flat manifolds with nonzero Euler characteristic in all even dimensions greater than $d=2$.
+\end{theorem}
+
+\begin{proof}
+	The Euler characteristic of a connected sum of closed even dimensional manifolds satisfies:
+	\[ \chi( M \#N)=\chi(M)+ \chi(N)-2.\]
+	Using this formula we compute:
+	\[ \chi(M^4) =\chi(\Sigma_3 \times \Sigma_3)+\chi( \underbrace{ P\# \cdots \#P}_{6\text{ times}})-2=16-10-2=4.\]
+	and
+	\[ \chi(M^6) =(\chi(\Sigma_3 \times \Sigma_3)+\chi( \underbrace{ P\# \cdots \#P}_{9\text{ times}})-2)\times \chi(\Sigma_3)=(16-16-2)\times (-4)=8.\]
+	It remains to prove that $M^4$ and $M^6$ are flat manifolds. Lemmas \ref{connected} and \ref{product} imply that $M^4$ and $M^6$ are almost trivial. Let $h: \Sigma_3 \rightarrow S^2$ be a degree one map and set $E=h^*(TS^2)$. Then $E$ is almost parallelizable and:
+	\[ \int_{\Sigma_3}e(E)=\int_{S^2} e(TS^2)=2.\]
+	Lemma \ref{product} implies that  ${\pi}^*E \oplus {\pi}^*E$ is an almost trivial bundle over $\Sigma_3 \times \Sigma_3.$ Let \[f: M^4 \rightarrow \Sigma_3 \times \Sigma_3\] be the map that
+	sends \[\underbrace{ P\# \cdots \#P}_{6\text{ times}}\] to a point. Then $f$ has degree $1$ and therefore:
+	\[ \int_{M^4} e(f^*(E \oplus E))= \int_{M^4} f^*(e(\pi(E \otimes E))=\int_{\Sigma_3 \times \Sigma_3} {\pi}^*(e(E))\wedge
+	{\pi}^*(e(E))=\Big(\int_{\Sigma_3}e(E)\Big)^2=4.\]
+	We conclude that:
+	\[ e(TM^4)=e({\pi}^*E \oplus {\pi}^*(E))\]
+	and therefore, by Lemma \ref{Euler}:
+	\[ TM^4 \simeq {\pi_1}^*E \oplus {\pi_2}^*(E).\]
+	Milnor's inequality \ref{Milnor} implies that $E$ admits a flat connection and therefore, so does $TM^4$.
+	Similarly, Let \[g:\Sigma_3 \times \Sigma_3\# \underbrace{ P\# \cdots \#P}_{9\text{ times}}  \rightarrow \Sigma_3 \times \Sigma_3\] be the map that
+	sends \[\underbrace{ P\# \cdots \#P}_{9\text{ times}}\] to a point. Then $g$ has degree one and therefore the map:
+	\[ z:=g \times \mathsf{id}:M^6 \rightarrow \Sigma_3 \times \Sigma_3 \times \Sigma_3\]
+	also has degree one. This implies that:
+	\[ \int_{M^6} e(z^*({\pi}^*E \oplus {\pi}^*E\oplus {\pi}^*E))= \Big(\int_{\Sigma_3} e(E) \Big)^3=8.\]
+	We conclude that:
+	\[ e(TM^6)=e({\pi}^*E \oplus {\pi}^*E \oplus {\pi}^*E)\]
+	and therefore:
+	\[ TM^6 \simeq {\pi}^*E \oplus {\pi}^*E \oplus {\pi}^*E .\]
+	Theorem \ref{Milnor} implies that $E$ admits a flat connection and therefore, so does $TM^6$.
+	
+\end{proof}

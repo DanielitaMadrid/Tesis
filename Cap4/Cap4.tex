@@ -1,0 +1,134 @@
+Here we will prove the following theorem of Kostant and Sullivan:
+
+\begin{theoremnn}[Kostant-Sullivan]\label{Theocomplete}
+	If $M$ is a closed affine complete manifold then $\chi(M)=0$.	
+\end{theoremnn}
+
+The idea of their proof is that even though the connection on $M$ may not admit a compatible metric, the Chern-Weil theory of characteristic classes can still be used to prove that the Euler class vanishes.
+
+
+\begin{definition}
+	We will say that a subgroup $G$ of ${Gl}(m,\R)$ is $1$-spectral if for every $ A \in G$, \[\mathsf{Det}(A-\mathsf{id})=0.\]
+\end{definition}
+
+\begin{definition}
+	We will say that a Lie subalgebra $\mathfrak{g}$ of $\mathfrak{gl}(m,\R)$ is singular if for all $v \in \mathfrak{g}$,
+	\[ \mathsf{Det(v)=0}.\]
+\end{definition}
+
+The key observation of Sullivan and Kostant is that if the frame bundle of $TM$ admits a reduction to a connected compact and $1$-spectral subgroup of ${GL}^+(m,\R)$ then the Euler class of $TM$ vanishes.
+
+
+\begin{lemma}
+	If $G$ is a $1$-spectral Lie subgroup of ${GL}(m,\R)$ then its Lie algebra $\mathfrak{g}$ is singular.
+\end{lemma}
+\begin{proof}
+	It is enough to prove that there is an open subset  $W\subseteq \mathfrak{g}$ such that $0\in W$  and all matrices of $W$ are singular.
+	Choose $W$ such that the exponential map $\mathsf{Exp}:W \to U\subseteq G$ is a diffeomorphism with inverse $\mathsf{Log}: U\to W$. For $v\in W$, $A\in U$ these functions are given explicitly by:
+	$$\mathsf{Exp}(v)=\sum_{k\geqslant0} \frac{x^{k}}{k!},$$
+	$$\mathsf{Log}(A)=\sum_{k\geqslant 1} \frac{(-1)^{k+1}(A-\mathsf{id})^{k}}{k}.$$
+	Any $v \in W$ is of the form $v=\mathsf{Log}(A)$ with $\mathsf{Det}(A-\mathsf{id})=0.$ Thus there exists a vector $x \in \R^m$ such that $Ax=x$. Then:
+	\[v(x):=\sum_{k\geqslant 1} \frac{(-1)^{k+1}(A-\mathsf{id})^{k}}{k} (x)=\sum_{k\geqslant 1} \frac{(-1)^{k+1}(A-\mathsf{id})^{k}(x)}{k}=0.\]
+	We conclude that $v$ is singular.
+\end{proof}
+
+\begin{lemma}\label{compact}
+	Let $M$ be a manifold of dimension $m$ and $P$  a ${GL}^{+}(m,\R)$ principal bundle over $M$  that admits a reduction to a subgroup $G$ which is compact, connected and $1$-spectral. Then the Euler class of $P$ vanishes.
+\end{lemma}
+
+\begin{proof}
+	The Chern-Weill homomorphism \[\mu_P: H(BGL^+(m,\R))\rightarrow H(M)\] factors through the restriction map:
+	\[\iota^*: H(BGL^+(m,\R)) \rightarrow H(BG).\] Moreover, there is a commutative diagram:
+	
+	\[
+	\xymatrix{
+		H(BGL^+(m,\R))\ar[r]^-{\iota^*} \ar[d]^-\simeq &H(BG) \ar[d]^-{\simeq}\\
+		S(\mathfrak{gl}(m,\R)^*)^{{GL}^+(m,\R)} \ar[r]^-{\rho}& S(\mathfrak{g}^*)^G
+	}
+	\]
+	
+	
+	where the vertical arrows are isomorphisms and $\rho$ is the restriction of polynomials. Since the Euler class corresponds to the Pfaffian polynomial, it suffices to prove that $\rho(\mathsf{Pf})=0$. For this we observe that since $\mathfrak{g}$ is singular:
+	\[[\rho(\mathsf{Pf})(v)]^2=\mathsf{Det}(v)^2=0.\]
+	We conclude that $\rho(\mathsf{Pf})=0$ and therefore the Euler class of $P$ vanishes.
+\end{proof}
+
+
+\begin{lemma}\label{s2}
+	Let $M$ be a manifold of dimension $m$ and $P$ is a ${GL}^{+}(m,\R)$ principal bundle over $M$  that admits a reduction to a subgroup $G$ which is closed, connected and $1$-spectral. Then the Euler class of $P$ vanishes.
+\end{lemma}
+\begin{proof}
+	Since $G$ is a closed subgroup of the general lineal group, it is a Lie subgroup.
+	Let $K\subseteq G$ be a maximal compact subgroup. Since $G/K$ is contractible, the natural map $\pi: BK \rightarrow BG$ is a homotopy equivalence.
+	The Chern-Weill homomorphism \[\mu_P: H(BGL^+(m,\R))\rightarrow M\] factors through the restriction map:
+	\[ \iota^*: H(B{GL}^+(m,\R)) \rightarrow H(BG)\] so it suffices to show that $\iota^*$ sends the Euler class to zero. There is also a commutative diagram:
+	
+	\[\xymatrix{
+		H(BGL^+(m,\R))\ar[r]^-{\pi^* \circ \iota^*} \ar[d]^{\simeq} &H(BK) \ar[d]^-{\simeq}\\
+		S(\mathfrak{gl}(m,\R)^*)^{{GL}^+(m,\R)} \ar[r]^-{\rho}& S(\frak{K}^*)^K
+	}\]	
+	By the Lemma \ref{compact} we know that ${\rho}(\mathsf{Pf})=0$ and therefore $ \pi^* \circ \iota^*$ sends the Euler class to zero. Since $\pi^*$ is an isomorphism, we conclude that $\iota^*$ sends the Euler class to zero.
+	
+\end{proof}
+
+\begin{lemma}\label{lemmaspectral}
+	Let $M$ be a manifold of dimension $m$ and $P$ be a $GL^{+}(m)$ principal bundle such that admits a reduction to  a subgroup $G \subseteq GL^{+}(m,\R)$ which is 1-spectral and closed. If $G$ has finite number of  connected components  then the Euler class of $P$ is zero.
+\end{lemma}
+\begin{proof}
+	As in the previous lemmas, it suffices to show that the restriction map:
+	\[ \iota^*: H(B{GL}^+(m,\R)) \rightarrow H(BG)\]
+	sends the Euler class to zero. Let $G'$ be the connected component of the identity in $G$. Then the natural map:
+	\[ \pi: BG' \rightarrow BG\]
+	is a finite covering and therefore it induces an injective map in cohomology. Therefore it suffices to show that the map:
+	\[ \pi^* \circ \iota^*: H(B{GL}^+(m,\R)) \rightarrow H(BG')\]
+	sends the Euler class to zero. This is guaranteed by Lemma \ref{s2}.
+	
+\end{proof}
+
+In view of the lemma above, we are left with the problem of showing that the frame bundle of a closed complete affine manifold admits a reduction to a closed 1-spectral group with finitely many connected components.
+
+\begin{lemma}\label{z}
+	Let $G$ be a 1 spectral subgroup of $GL(m,\R)$ and $\bar{G}$ its Zariski closure.
+	Then:
+	\begin{enumerate}
+		\item  $\bar{G}$ is a subgroup of $GL(m,\R)$.
+		\item $\bar{G}$ is a closed Lie group in $GL(m,\R)$.
+		\item $\bar{G}$ is 1-spectral.
+		\item $\bar{G}$ has finitely many connected components.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Since the multiplication and inverse functions are algebraic operations, they are continuous in the Zariski topology.
+	Fix $x\in G$ and consider the homeomorphism 	
+	\[\begin{array}{rcc}
+	L_x: GL(m,\R) & \longrightarrow & GL(m,\R) \\
+	y & \longmapsto & xy
+	\end{array}.\\ \]
+	Then \[x \bar{G}= \overline{x G}\subseteq \bar{G}.\]
+	Fix now $y \in \bar{G}$ and consider the hoeomorphism $R_y$ given by right multiplication by $y$. Then:
+	\[  \bar{G}y=\overline{ G y}\subseteq \bar{G}.\]
+	We conclude that $\bar{G}$ is closed with respect to the product. The map $x \mapsto x^{-1}$ is a homeomorphism
+	of $GL(m,\R)$ and therefore:
+	\[ \bar{G}^{-1}=\overline{G^{-1}}=\overline{G}.\]
+	We conclude that $G$ is a group.
+	The second statement is true because $\bar{G}$ is closed in the Zariski topology and in therefore also in the smooth topology. The third statement holds because the determinant is a continuous function. The last statement is true because any real algebraic set has finitely many connected components. 	
+	
+\end{proof}
+
+We can now prove Chern's conjecture for complete manifolds:
+\begin{theorem}[Kostant-Sullivan]\label{Theocomplete}
+	If $M$ is a closed affine complete manifold then $\chi(M)=0$.
+\end{theorem}
+
+\begin{proof}
+	In view of Lemma \ref{lemmaspectral} it suffices to show that the frame bundle of $TM$ admits a reduction to
+	a closed 1-spectral subgroup of $GL^+(m,\R)$ which has finitely many connected components. By Proposition \ref{develop} we know that $M$ is the quotient $ \R^m / \Gamma$ where $\Gamma \subset \mathsf{Aff}(\R^m)$ is isomorphic to the fundamental group of $M$. Consider the natural homomorphism
+	\[ \lambda:  \mathsf{Aff}(\R^m) \rightarrow GL(m,\R); \, Ax+b \mapsto A \]
+	and let $G$ be the group $\lambda(\Gamma)$. We claim that $G$ is 1-spectral. Take $g=Ax+b \in \mathsf{Aff}(\R^m)$. If $A$ is not 1-spectral then the equation $Ax+b=x$ has a solution, which is imposible because $\Gamma$ acts freely on $\R^m$.  Lemma \ref{z} guarantees that $\bar{G}$ is a closed 1-spectral group with finitely many connected components. Therefore, it suffices to prove that the frame bundle of $TM$ admits a reduction to the group $G$ and therefore to $\bar{G}$. Consider the projection \[ \pi: \R^m \rightarrow M\] and for each $p\in M$, the following subset of the frame bundle of $T_pM$:
+	\[ S_p:=\{ \phi: \R^m \rightarrow T_pM: \phi \text{ is a linear isomorphism of the form } \phi= D\pi(x) \text{ for } x \in \pi^{-1}(p)\} \]
+	
+	The group $G$ acts on the right by composition and this action is free and transitive. If we set:
+	\[S:=\coprod_p S_p\subset \mathsf{Fr}(TM)\]
+	we obtain a reduction of the structure group of the frame bundle of $TM$ to $G$.
+\end{proof}

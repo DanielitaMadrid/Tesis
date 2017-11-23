@@ -1,0 +1,204 @@
+An affine structure on a manifold is an atlas whose transition functions are affine transformations. The existence of such a structure is equivalent to the existence of a flat torsion free connection on the tangent bundle. Chern's conjecture states the following:
+
+\begin{conjecture}[Chern $\sim$ 1955]
+	The Euler characteristic of a closed affine manifold is zero.
+\end{conjecture}
+In case the connection $\nabla$ is the Levi-Civita connection of a riemannian metric, the Chern-Gauss-Bonnet formula:
+
+\[ \chi(M)= \Big(\frac{1}{2\pi}\Big)^n \int_M \mathsf{Pf}(K),\]
+
+\noindent implies that the Euler characteristic is zero. However, not all flat torsion free connections on $TM$ admit a compatible metric, and therefore, Chern-Weil theory cannot be used in general to write down the Euler class in terms of the curvature.\\
+
+These thesis contain an exposition of the following results concerning  the Euler characteristic of affine manifolds:
+\begin{itemize}
+	\item In 1955, Benz\'ecri \cite{B} proved that a closed affine surface has zero Euler characteristic.
+	
+	\item In 1958, Milnor \cite{Milnor} proved inequalities which completely characterise those oriented rank two bundles over a surface that admit a flat connection.
+	
+	\item In 1975, Kostant and Sullivan \cite{KS} proved Chern's conjecture in the case where the manifold is complete.
+	
+	\item In 1977, Smillie \cite{Smillie} proved that the condition that the connection is torsion free matters. For each even dimension greater than $2$, Smillie constructed closed manifolds with non-zero Euler characteristic that admit a flat connection on their tangent bundle.
+	
+	
+	
+	\item In 2015, Klingler \cite{K} proved the conjecture for special affine manifolds. That is, affine manifolds that admit a parallel volume form.
+	
+\end{itemize}
+
+Recently, Feng and Zhang \cite{FZ} posted a proof of the general case using the Mathai-Quillen formalism for characteristic classes. Due to lack of understanding, we will not cover their work.\\ \\
+We have added appendices with preliminary material.
+Appendix A contains a review of the theory of connections, curvature and the Chern-Gauss-Bonnet theorem.
+Appendix B contains introductions to spectral sequences and Appendix C to sheaf theory.
+\section{Affine manifolds}
+
+
+\begin{definition}
+	A diffeomorphism $\varphi$ between open subsets of $\R^m$ is affine if it has the form:
+	\[ \varphi(x)= Ax+b,\]
+	where $A \in {GL}(m,\R)$ and $b \in \R^m$.
+\end{definition}
+
+\begin{definition}
+	An \index{Afffine structure} affine structure on a manifold is an atlas such that all transition functions are affine and it is maximal with this property.
+	An affine manifold is a manifold together with an affine structure.
+\end{definition}
+
+It is possible to characterise affine structures in a more intrinsic manner that can be expressed without reference to an atlas, as the following lemma shows:
+
+\begin{lemma}
+	Let $M$ be a manifold. There is a natural bijective correspondence between affine structures on $M$ and flat torsion free connections on $TM$.
+\end{lemma}
+\begin{proof}
+	Let $(U_\alpha,\varphi_\alpha)$ be an affine structure on $M$. There is a unique connection $\nabla$ on $TM$ whose Christoffel symbols vanish in affine coordinates. Conversely, given a flat torsion free connection $\nabla$ on $TM$, the set of coordinates for which the Christoffel symbols of $\nabla$ vanish gives an affine structure on $M$.
+\end{proof}
+
+\begin{example}
+	The torus $\mathbb{T}^m:= \R^m/\mathbb{Z}^m$ has a natural affine structure for which the projection map $\pi: \R^m \rightarrow \mathbb{T}^m$ is an affine local difeomorphism.
+\end{example}
+
+
+\begin{example}[Hopf manifolds]
+	Let us fix a real number $\lambda>1$ and consider the action of the group $\mathbb{Z}$ on $\R^m-\{0\}$ given by:
+	\[ n \star x:= \lambda^n x.\]
+	Since the action is free and proper, the quotient is a smooth manifold called the Hopf manifold $\mathsf{Hopf}^m_\lambda$. Since the group $\mathbb{Z}$ acts by affine transformations the quotient space is an affine manifold. Topologically, these manifolds are the union of two circles for $m=1$ and diffeomorphic to $S^{m-1}\times S^1$ for $m>1$.
+\end{example}
+
+
+\begin{definition}
+	An affine structure on a Lie group $G$ is called left invariant if for all $g \in G$:
+	\[ (L_g)^*(\nabla)=\nabla,\]
+	where $L_g$ denotes the diffeomorphism given by left multiplication by $g$.
+\end{definition}
+
+\begin{definition}
+	Let $V$ be a real vector space. A bilinear map:
+	\[\beta: V \otimes V \rightarrow V;\,\, v \otimes w \mapsto v\cdot w\]
+	is called left symmetric if:
+	\[ v\cdot (w \cdot z)-(v\cdot w) \cdot z= w\cdot (v \cdot z)-(w\cdot v)\cdot z.\]
+\end{definition}
+
+
+\begin{definition}
+	An affine structure on a finite dimensional real Lie algebra $\mathfrak{g}$ is a left symmetric bilinear form on $\mathfrak{g}$ such that for all $v,w \in \mathfrak{g}$:
+	\[ [v,w]=v\cdot w- w \cdot v.\]
+\end{definition}
+
+\begin{lemma}
+	Let $G$ be a Lie group with Lie algebra $\mathfrak{g}$. There is a natural bijective correspondence between
+	left invariant affine structures on $G$ and affine structures on $\mathfrak{g}$.
+\end{lemma}
+
+\begin{proof}
+	For any $v \in \mathfrak{g}=T_eG$ denote by $\hat{v}$ the corresponding left invariant vector field. Given a left invariant affine structure on $G$ we define a bilinear form on $\mathfrak{g}$ by:
+	\[ v\cdot w:= \nabla_{\hat v}\hat{w}(e).\]
+	Since $\nabla$ is torsion free we know that:
+	\[ v \cdot w - w \cdot v =  \nabla_{\hat v}\hat{w}(e)-  \nabla_{\hat w}\hat{v}(e) =[v,w].\]
+	Using the fact that $\nabla$ is flat and left invariant, we compute:
+	\begin{eqnarray*}
+		v\cdot (w \cdot z)-(v\cdot w) \cdot z-w\cdot (v \cdot z)+(w\cdot v)\cdot z&=& \nabla_{\hat{v}} (\nabla_{\hat{w}}(\hat{z}))\\
+		&\quad&-\nabla_{\nabla_{\hat{v}}(\hat{w})}(\hat{z}) - \nabla_{\hat{w}} (\nabla_{\hat{v}}(\hat{z}))+\nabla_{\nabla_{\hat{w}}(\hat{v})}(\hat{z})\\
+		&=&\nabla_{[\hat{v},\hat{w}]}(\hat{z})-\nabla_{[\hat{v},\hat{w}]}(\hat{z})\\
+		&=&0.
+	\end{eqnarray*}
+	So we conclude that the bilinear form is left symmetric. Conversely, given an affine structure on $\frak{g}$ there is a unique left invariant connection $\nabla$ such that:
+	\[ \nabla_{\hat{v}}\hat{w}(e)=v\cdot w.\]
+	The computations above show that this connection is flat and torsion free.
+\end{proof}
+
+\begin{example}
+	The Lie algebra $\mathfrak{gl}(n,\R)$ admits a natural affine structure given by:
+	\[ A \cdot B:= AB.\]
+	We conclude that the Lie group $GL(n, \R)$ admits a left invariant affine structure.
+\end{example}
+
+
+The question of which Lie groups admit left invariant affine structures is an interesting problem. In \cite{Milnor2}, Milnor asked whether solvable Lie algebras admit affine structures. In \cite{Bu}, Burde showed that the answer to this question is negative.
+
+\section{Complete manifolds and the developing map}
+
+In this section we introduce the developing map of a simply connected affine manifold and use it to characterise complete affine manifolds.
+
+\begin{theorem}
+	Let $M$ be an affine manfiold of dimension $m$ and $G$ be the group $\mathsf{Aff}(\mathbb{R}^m)$ seen as a discrete group. There is a natural principal $G$-bundle \linebreak{ $\pi:\tau(M) \rightarrow M$} such that sections  of $\pi$ are in natural bijective correspondence with affine immersions from $M$ to $\R^m$. \end{theorem}
+\begin{proof} For each $p\in M$ we define:
+	\[C_{p}= \left\{  \varphi: U\to V\subseteq \R^m:  \varphi \text{ is an affine diffeomorphism and }p\in U \right\}.\]
+	
+	There is an equivalence relation $\sim$ on $C_p$ given by declaring that $\varphi \sim \varphi'$ if an only if there exists an open subset $W \subseteq U \cap U'$ such that $p \in W$ and $\varphi\vert_W=\varphi' \lvert_W$. Let us denote by $L_p$ the set of equivalence classes of elements in $C_p$ and set:
+	\[\tau(M):=\coprod_{p} L_{p}.\]
+	There is a natural map:
+	\[
+	\pi:\tau(M) \rightarrow M . \]
+	The Lie group $G$ acts on each set $L_p$ by composition:
+	\[g \ast \varphi := g \circ \varphi,\]
+	and this action is free and transitive. Moreover, an affine chart $\varphi: U \rightarrow V\subseteq \R^m$ induces a natural identification:
+	\[ \hat{\varphi}: \mathsf{Aff}(\R^m)\times U \rightarrow \pi^{-1}(U); \,\, (g,p)\mapsto [ g \circ \varphi]_p, \]
+	where $[g \circ \varphi]_p$ denotes the class of $g \circ \varphi$ in $L_p$. There is a unique topology on $\tau(M)$ such that $\hat{\varphi}$ is a homeomorphism for all affine diffeomorphisms $\varphi$. The map $\pi: \tau(M) \rightarrow M$ is a principal $G$ bundle with respect to this topology. Let $\sigma$ be a section of $\pi$. Then we define $\tilde{\sigma}:M \rightarrow \R^m$ by:
+	\[ \tilde{\sigma}(p):= \sigma(p) (p).\]
+	By construction, the map $\tilde{\sigma}$ is an affine immersion. Conversely, an affine immersion \linebreak{ $f: M \rightarrow \R^m$} defines a section $\sigma_f$ given by:
+	\[ \sigma_f(p):= [f]_p.\]
+\end{proof}
+
+
+\begin{corollary}\label{extend}
+	Let $M$ be a simply connected affine manifold. Any affine chart \linebreak{ $\varphi: U \rightarrow V \subseteq \R^m$} extends uniquely to an affine immersion from $M$ to $\R^m$. \end{corollary}
+
+\begin{proof}
+	Since $M$ is simply connected, the covering space $\pi: \tau(M) \rightarrow M$ is trivial and therefore any local section extends uniquely to a global one.
+\end{proof}
+
+\begin{definition} \index{Developing map}
+	A developing map for an affine simply connected manifold is an affine immersion into $\R^m$.
+\end{definition}
+
+\begin{corollary}
+	If $M$ is an affine connected manifold with finite fundamental group then $M$ is not compact.
+\end{corollary}
+
+\begin{proof}
+	If $M$ is compact then so is its universal cover $\tilde{M}$ which is simply connected and therefore admits an immersion to $\R^m$. This is impossible.
+\end{proof}
+
+\begin{definition} \index{Complete manifold}
+	An affine manifold $M$ with affine connection $\nabla$ is called complete if all geodesics can be extended to arbitrary time.
+\end{definition}
+
+\begin{lemma}\label{unique}
+	Let $M$ and $N$ be connected affine manifolds of the same dimension and $f,g:M \rightarrow N$ affine immersions. If $f$ and $g$ coincide on a nonempty open subset of $M$ then they are equal.
+\end{lemma}
+\begin{proof}
+	First we observe that the lemma is true if $M$ and $N$ are open subsets of $\R^m$.
+	For the general case, let $X\subset M$ be the subset of $M$ that consists of points $p\in M$ such that $f$ and $g$ coincide in an open neighborhood of $p$. Clearly, $X$ is open. It suffices to show that $X$ is closed.
+	Fix $p \in X$ and $q \in M$ arbitrary. Since $M$ is connected, there is a path $\gamma: I \rightarrow M$ such that
+	$\gamma(0)=p$ and $\gamma(1)=q$. Set \[Y:= \gamma^{-1}(M-X).\] We would like to show that $Y=\emptyset$. Suppose that $Y$ is nonempty and set $y:=\inf(Y)$ and $z=\gamma(y)$. Choose affine coordinates $\varphi: U \rightarrow V$ around $z$ and $ \psi: W \rightarrow Z $ around $f(z)$ such that $f(U) \subseteq W$ and $g(U) \subseteq W$. Since $p$ is in $X$ there exists $l<y$ such that $\gamma(l) \in U\cap X$. Then $f\vert_U$ and $g\vert_U$ coincide in an open neighborhood. Since both $U$ and $ W$ are isomorphic to open subsets of $\R^m$ we conclude that $f\vert_U=g\vert_U$. This is a contradiction.
+\end{proof}
+
+
+\begin{lemma}\label{local}
+	Let $M$ be a simply connected complete affine manifold of dimension $m$. Then any affine coordinate $\varphi: U \rightarrow V\subseteq \R^m$ can be extended uniquely to a diffeomorphism from $M$ to $\R^m$.
+\end{lemma}
+\begin{proof}
+	Fix a point $p \in M$ and affine coordinates $\varphi: U \rightarrow V$. By Corollary \ref{extend},
+	$\varphi$ can be extended uniquely to an affine immersion $\tilde{\varphi}: M \rightarrow \R^m$. We will prove that $\tilde{\varphi}$ is a diffeomorphism. Since $M$ is complete, the exponential map is defined on the whole tangent space $T_pM$:
+	\[ \mathsf{Exp}: T_pM \rightarrow M.\]
+	On the other hand, the derivative of $\varphi^{-1}$ at $x=\varphi(p)$ is an isomorphism from $\R^m$ to $T_pM$. We claim that
+	the map: \[\psi(y):=\mathsf{Exp} \circ D(\varphi^{-1})(y-x)\]
+	is the inverse of $\tilde{\varphi}$. By Lemma \ref{local}, it suffices to show that the functions are inverses to each other in a small open neighborhood. For $q \in U$ we compute:
+	\[ \psi (\tilde{\varphi}(q))= \mathsf{Exp} \circ D(\varphi^{-1})(\varphi(q)-x)=q.\]
+	Conversely, for $y \in V$ we have:
+	\[ \tilde{\varphi}\circ \psi(y)= \varphi \circ \mathsf{Exp} \circ  D(\varphi^{-1})(y-x)= \mathsf{Exp}(y-x)=y. \]
+\end{proof}
+
+
+\begin{proposition}\label{develop} \index{Complete manifold}
+	Let $M$ be an affine manifold. The following statements are equivalent:
+	\begin{enumerate}
+		\item  $M$ is complete.
+		\item There is an affine diffeomorphism $M \cong \R^m /\Gamma$, where $\Gamma$ is a discrete subgroup of $\mathsf{Aff}(\R^m)$ and the projection $\pi: \R^m \rightarrow M$ is the universal cover of $M$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Let us assume that $M$ is complete. Then $\tilde{M}$ is also complete and simply connected. By Proposition \ref{develop} there is an affine difeomorphism $\varphi: \tilde{M} \rightarrow \R^m$. Let us fix a point $p \in M$. Then there is an action of $\pi_1(M,p)$ on $\tilde{M}$ and therefeore on $\R^m$. Since this action is by affine transformations, it defines a homomorphism $\rho: \pi_1(M,p) \rightarrow \mathsf{Aff}(\R^m)$. If we set $\Gamma:= \mathsf{Im}(\rho)$ we get by construction that $ M \cong \R^m/\Gamma$. Conversely, any manifold of the form $\R^m/\Gamma$ is complete.
+	
+	
+\end{proof}
